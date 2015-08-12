@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="estilogame.css">
 	<style>
 	td {
 		width: 50px;
@@ -12,6 +12,124 @@
 		text-align: center;
 	}
 	</style>
+	<script type="text/javascript">
+
+		//Verificar se houve vencedor
+		function verificaVencedor()
+		{	
+			//X vencendo.
+
+			//linha 1
+			if(c1_1.innerHTML == "X" && c1_2.innerHTML == "X" && c1_3.innerHTML == "X"){
+				alert("X venceu");
+				restart("X");
+			}
+			//linha 2
+			if(c2_1.innerHTML == "X" && c2_2.innerHTML == "X" && c2_3.innerHTML == "X"){
+				alert("X venceu");
+				restart("X");
+			}
+			//linha 3
+			if(c3_1.innerHTML == "X" && c3_2.innerHTML == "X" && c3_3.innerHTML == "X"){
+				alert("X venceu");
+				restart("X");
+			}
+			//coluna 1
+			if(c1_1.innerHTML == "X" && c2_1.innerHTML == "X" && c3_1.innerHTML == "X"){
+				alert("X venceu");
+				restart("X");
+			}
+			//coluna 2
+			if(c1_2.innerHTML == "X" && c2_2.innerHTML == "X" && c3_2.innerHTML == "X"){
+				alert("X venceu");
+				restart("X");
+			}
+			//coluna 3
+			if(c1_3.innerHTML == "X" && c2_3.innerHTML == "X" && c3_3.innerHTML == "X"){
+				alert("X venceu");
+				restart("X");
+			}
+			//diagonal principal
+			if(c1_1.innerHTML == "X" && c2_2.innerHTML == "X" && c3_3.innerHTML == "X"){
+				alert("X venceu");
+				restart("X");
+			}
+			//diagonal secundária
+			if(c1_3.innerHTML == "X" && c2_2.innerHTML == "X" && c3_1.innerHTML == "X"){
+				alert("X venceu");
+				restart("X");
+			}
+
+			//0 vencendo.
+
+			//linha 1
+			if(c1_1.innerHTML == "0" && c1_2.innerHTML == "0" && c1_3.innerHTML == "0"){
+				alert("0 venceu");
+				restart("0");
+			}
+			//linha 2
+			if(c2_1.innerHTML == "0" && c2_2.innerHTML == "0" && c2_3.innerHTML == "0"){
+				alert("0 venceu");
+				restart("0");
+			}
+			//linha 3
+			if(c3_1.innerHTML == "0" && c3_2.innerHTML == "0" && c3_3.innerHTML == "0"){
+				alert("0 venceu");
+				restart("0");
+			}
+			//coluna 1
+			if(c1_1.innerHTML == "0" && c2_1.innerHTML == "0" && c3_1.innerHTML == "0"){
+				alert("0 venceu");
+				restart("0");
+			}
+			//coluna 2
+			if(c1_2.innerHTML == "0" && c2_2.innerHTML == "0" && c3_2.innerHTML == "0"){
+				alert("0 venceu");
+				restart("0");
+			}
+			//coluna 3
+			if(c1_3.innerHTML == "0" && c2_3.innerHTML == "0" && c3_3.innerHTML == "0"){
+				alert("0 venceu");
+				restart("0");
+			}
+			//diagonal principal
+			if(c1_1.innerHTML == "0" && c2_2.innerHTML == "0" && c3_3.innerHTML == "0"){
+				alert("0 venceu");
+				restart("0");
+			}
+			//diagonal secundária
+			if(c1_3.innerHTML == "0" && c2_2.innerHTML == "0" && c3_1.innerHTML == "0"){
+				alert("0 venceu");
+				restart("0");
+			}
+
+		}
+		//Reinicar o jogo e contar o placar.
+		function restart(jogador){
+			//reinicia tudo!!
+			if(jogador == "X"){
+				pontosX++;
+				document.getElementById("ptx").innerHTML = pontosX;
+			}
+			else{
+				pontos0++;
+				document.getElementById("pt0").innerHTML = pontos0;	
+			}
+			//reiniciando...
+			vezdox = true;
+			c1_1.innerHTML = "";
+			c1_2.innerHTML = "";
+			c1_3.innerHTML = "";
+			c2_1.innerHTML = "";
+			c2_2.innerHTML = "";
+			c2_3.innerHTML = "";
+			c3_1.innerHTML = "";
+			c3_2.innerHTML = "";
+			c3_3.innerHTML = "";
+		}
+
+	</script>
+
 </head>
 <body>
 <table border="1">
@@ -31,12 +149,41 @@
 		<td id="c3_3" onclick="marca(3,3);"></td>
 	</tr>
 </table>
+<br><br><br>
+<table border="1">
+	<tr>
+		<td rowspan="2">Placar</td>
+		<td>X</td>
+		<td>0</td>
+	</tr>
+	<tr>
+		<td id="ptx"></td>
+		<td id="pt0"></td>
+	</tr>
+</table>
+
 <script>
-	vezdox = true;
-	function marca (x,y) {
+		// posições
+		var c1_1 = document.getElementById("c1_1");
+		var c1_2 = document.getElementById("c1_2");
+		var c1_3 = document.getElementById("c1_3");
+		var c2_1 = document.getElementById("c2_1");
+		var c2_2 = document.getElementById("c2_2");
+		var c2_3 = document.getElementById("c2_3");
+		var c3_1 = document.getElementById("c3_1");
+		var c3_2 = document.getElementById("c3_2");
+		var c3_3 = document.getElementById("c3_3");
+		vezdox = true;
+		//pontuação
+		var pontosX = 0;
+		var pontos0 = 0;
+
+		function marca (x,y) {
 		if(vezdox) document.getElementById('c'+x+'_'+y).innerHTML = "X";
 		else document.getElementById('c'+x+'_'+y).innerHTML = 0;
 		vezdox=!vezdox;
+		//verifica se houve vencedor.
+		verificaVencedor();
 	}
 </script>
 </body>

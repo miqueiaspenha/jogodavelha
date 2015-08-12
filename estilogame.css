@@ -1,0 +1,4 @@
+/* Retirar as bordas duplas */
+table {
+	border-collapse: collapse;
+}
